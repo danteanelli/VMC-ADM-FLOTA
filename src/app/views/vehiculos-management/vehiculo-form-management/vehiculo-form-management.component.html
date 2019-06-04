@@ -1,0 +1,290 @@
+<h1 matDialogTitle>{{data.title}}</h1>
+
+<form [formGroup]="itemForm" (ngSubmit)="submit()">
+    <div fxLayout="row wrap" fxLayout.lt-sm="column">
+        <div fxFlex="50"  class="pr-1">
+            <mat-form-field class="full-width">
+                <mat-label>Seleccione Tipo de Equipo</mat-label>
+                <mat-select disableRipple>
+                    <mat-option value="1">Option 1</mat-option>
+                    <mat-option value="2">Option 2</mat-option>
+                    <mat-option value="3">Option 3</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="50"  class="pr-1">
+            <mat-form-field class="full-width">
+                <mat-label>Seleccione SubTipo de Equipo</mat-label>
+                <mat-select disableRipple>
+                    <mat-option value="1">Option 1</mat-option>
+                    <mat-option value="2">Option 2</mat-option>
+                    <mat-option value="3">Option 3</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="25"  class="pr-1">
+            <mat-form-field class="full-width">
+                <input
+                        matInput
+                        type="text"
+                        name="username"
+                        [formControl]="itemForm.controls['name']"
+                        placeholder="Dominio">
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="25"  class="pr-1">
+            <mat-form-field class="full-width">
+                <input
+                        matInput
+                        type="number"
+                        name="age"
+                        [formControl]="itemForm.controls['age']"
+                        placeholder="Anio">
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="25"  class="pr-1">
+            <mat-form-field class="full-width">
+                <mat-label>Seleccione Marca</mat-label>
+                <mat-select disableRipple>
+                    <mat-option value="1">Option 1</mat-option>
+                    <mat-option value="2">Option 2</mat-option>
+                    <mat-option value="3">Option 3</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="25"  class="pr-1">
+            <mat-form-field class="full-width">
+                <mat-label>Seleccione Modelo</mat-label>
+                <mat-select disableRipple>
+                    <mat-option value="1">Option 1</mat-option>
+                    <mat-option value="2">Option 2</mat-option>
+                    <mat-option value="3">Option 3</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="25"  class="pr-1">
+            <mat-form-field class="full-width">
+                <input
+                        matInput
+                        type="text"
+                        name="username"
+                        placeholder="Codigo">
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="25"  class="pr-1">
+            <mat-form-field class="full-width">
+                <input
+                        matInput
+                        type="text"
+                        name="username"
+                        placeholder="Codigo QR">
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="25"  class="pr-1">
+            <mat-form-field class="full-width">
+                <input
+                        matInput
+                        type="text"
+                        name="username"
+                        placeholder="Numero de VIN">
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="25"  class="pr-1">
+            <mat-form-field class="full-width">
+                <input
+                        matInput
+                        type="text"
+                        name="username"
+                        placeholder="Numero de Chasis">
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="25"  class="pr-1">
+            <mat-form-field class="full-width">
+                <input
+                        matInput
+                        type="text"
+                        name="username"
+                        placeholder="Numero de Motor">
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="25"  class="pr-1">
+            <mat-form-field class="full-width">
+                <input
+                        matInput
+                        type="text"
+                        name="username"
+                        placeholder="Numero de Poliza de Seguro">
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="25"  class="pr-1">
+            <mat-form-field class="full-width">
+                <input
+                        matInput
+                        type="text"
+                        name="username"
+                        placeholder="Numero de Certificacion Veritas">
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="25"  class="pr-1">
+            <mat-form-field class="full-width">
+                <input
+                        matInput
+                        type="text"
+                        name="username"
+                        placeholder="Fecha de Vencimiento poliza de seguro">
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="25"  class="pr-1">
+            <mat-form-field class="full-width">
+                <input
+                        matInput
+                        type="text"
+                        name="email"
+                        [formControl]="itemForm.controls['email']"
+                        placeholder="Fecha de Vencimiento de VTV">
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="25"  class="pr-1">
+            <mat-form-field class="full-width">
+                <input
+                        matInput
+                        name="company"
+                        [formControl]="itemForm.controls['company']"
+                        placeholder="Fecha de Vencimiento de  BureauVeritas">
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="25"  class="pr-1">
+            <mat-form-field class="full-width">
+                <mat-label>Status del Equipo</mat-label>
+                <mat-select disableRipple>
+                    <mat-option value="1">Option 1</mat-option>
+                    <mat-option value="2">Option 2</mat-option>
+                    <mat-option value="3">Option 3</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+
+        <div fxFlex="25"  class="pr-1">
+            <mat-form-field class="full-width">
+                <input
+                        matInput
+                        name="phone"
+                        [formControl]="itemForm.controls['phone']"
+                        placeholder="ID del Dispositivo de Tracking">
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="25"  class="pr-1">
+            <mat-form-field class="full-width">
+                <input
+                        matInput
+                        name="address"
+                        [formControl]="itemForm.controls['address']"
+                        placeholder="Largo">
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="25"  class="pr-1">
+            <mat-form-field class="full-width">
+                <input
+                        matInput
+                        name="balance"
+                        [formControl]="itemForm.controls['balance']"
+                        placeholder="Ancho">
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="25"  class="pr-1">
+            <mat-form-field class="full-width">
+                <input
+                        matInput
+                        type="text"
+                        name="username"
+                        placeholder="Tara">
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="25"  class="pr-1">
+            <mat-form-field class="full-width">
+                <input
+                        matInput
+                        type="text"
+                        name="username"
+                        placeholder="Alto">
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="25"  class="pr-1">
+            <mat-form-field class="full-width">
+                <input
+                        matInput
+                        type="text"
+                        name="username"
+                        placeholder="Capacidad">
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="25"  class="pr-1">
+            <mat-form-field class="full-width">
+                <input
+                        matInput
+                        type="text"
+                        name="username"
+                        placeholder="HP">
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="25"  class="pr-1">
+            <mat-form-field class="full-width">
+                <input
+                        matInput
+                        type="text"
+                        name="username"
+                        placeholder="Cantidad de Ejes">
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="25"  class="pr-1">
+            <mat-form-field class="full-width">
+                <input
+                        matInput
+                        type="text"
+                        name="username"
+                        placeholder="Neumaticos">
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="100"  class="pr-1">
+            <mat-form-field class="full-width">
+                <input
+                        matInput
+                        type="text"
+                        name="username"
+                        placeholder="Observaciones">
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="100" class="mt-1">
+            <button mat-raised-button color="primary" [disabled]="itemForm.invalid">{{"SAVE" }}</button>
+            <span fxFlex></span>
+            <button mat-button color="warn" type="button" (click)="dialogRef.close(false)">Cancel</button>
+        </div>
+    </div>
+</form>

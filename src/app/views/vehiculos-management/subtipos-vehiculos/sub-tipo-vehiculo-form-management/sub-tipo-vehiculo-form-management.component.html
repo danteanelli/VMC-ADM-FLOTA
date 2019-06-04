@@ -1,0 +1,32 @@
+<h1 matDialogTitle>{{data.title}}</h1>
+
+<form [formGroup]="itemForm" (ngSubmit)="submit()">
+    <div fxLayout="row wrap" fxLayout.lt-sm="column">
+        <div fxFlex="50"  class="pr-1">
+            <mat-form-field class="full-width">
+                <input
+                        matInput
+                        name="username"
+                        [formControl]="itemForm.controls['name']"
+                        placeholder="Name">
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="50"  class="pr-1">
+            <mat-form-field class="full-width">
+                <mat-label>Select an option</mat-label>
+                <mat-select disableRipple>
+                    <mat-option value="1">Option 1</mat-option>
+                    <mat-option value="2">Option 2</mat-option>
+                    <mat-option value="3">Option 3</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="100" class="mt-1">
+            <button mat-raised-button color="primary" [disabled]="itemForm.invalid">{{"Guardar"}}</button>
+            <span fxFlex></span>
+            <button mat-button color="warn" type="button" (click)="dialogRef.close(false)">Cancelar</button>
+        </div>
+    </div>
+</form>
