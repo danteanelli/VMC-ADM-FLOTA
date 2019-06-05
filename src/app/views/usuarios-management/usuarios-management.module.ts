@@ -12,6 +12,7 @@ import { PerfilesManagementListComponent } from './perfiles-management/perfiles-
 
 import { usuariosRoutes } from './usuarios-management.routing'
 import {ReactiveFormsModule} from '@angular/forms';
+import {FlexModule} from '@angular/flex-layout';
 
 @NgModule({
     declarations: [
@@ -25,7 +26,8 @@ import {ReactiveFormsModule} from '@angular/forms';
         SharedMaterialModule,
         NgxDatatableModule,
         RouterModule.forChild(usuariosRoutes),
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        FlexModule
     ],
     entryComponents: [
         UsuariosManagementFormComponent,
