@@ -9,7 +9,7 @@ import { AppLoaderService } from '../../../../shared/services/app-loader/app-loa
 import { ModelosManagementService } from '../modelos-management.service';
 
 // Componentes
-import { MarcasManagementFormComponent } from '../../marcas-management/marcas-management-form/marcas-management-form.component';
+import { ModelosManagementFormComponent } from '../modelos-management-form/modelos-management-form.component';
 
 @Component({
     selector: 'app-modelos-management-list',
@@ -33,7 +33,7 @@ export class ModelosManagementListComponent implements OnInit {
 
     openPopUp(data: any = {}, isNew?) {
         let title = isNew ? 'Agregar Modelo' : 'Modificar Modelo';
-        let dialogRef: MatDialogRef<any> = this.dialog.open(MarcasManagementFormComponent, {
+        let dialogRef: MatDialogRef<any> = this.dialog.open(ModelosManagementFormComponent, {
             width: '720px',
             disableClose: true,
             data: { title: title, payload: data }
