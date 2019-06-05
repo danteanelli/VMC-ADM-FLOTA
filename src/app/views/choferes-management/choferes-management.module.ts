@@ -19,6 +19,8 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 // Servicios
 import { TiposLicenciaManagementService } from './tipos-licencia-management/tipos-licencia-management.service';
 import { ChoferesManagementService } from './choferes-management.service';
+import {FlexModule} from '@angular/flex-layout';
+import {FileUploadModule} from 'ng2-file-upload';
 
 @NgModule({
     declarations: [
@@ -32,7 +34,9 @@ import { ChoferesManagementService } from './choferes-management.service';
         RouterModule.forChild(choferesRoutes),
         SharedMaterialModule,
         NgxDatatableModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        FlexModule,
+        FileUploadModule
     ],
     entryComponents: [
         ChoferesManagementFormComponent,

@@ -72,14 +72,16 @@ export class TiposLicenciaManagementListComponent implements OnInit, OnDestroy {
                 if (isNew) {
                     this.tiposLicenciaService.add(res)
                         .subscribe( data => {
-                             this.items = data;
-                             this.loader.close();
-                             this.snack.open('Member Added!', 'OK', { duration: 4000 });
+                            // this.items = data;
+                            this.getTiposLicencia();
+                            this.loader.close();
+                            this.snack.open('Member Added!', 'OK', { duration: 4000 });
                         });
                 } else {
                     this.tiposLicenciaService.update(data.id, res)
                          .subscribe( data => {
-                             this.items = data;
+                             // this.items = data;
+                             this.getTiposLicencia();
                              this.loader.close();
                              this.snack.open('Member Updated!', 'OK', { duration: 4000 });
                          });

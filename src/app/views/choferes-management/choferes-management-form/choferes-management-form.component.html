@@ -1,3 +1,99 @@
-<p>
-  choferes-management-form works!
-</p>
+<h1 matDialogTitle>{{data.title}}</h1>
+
+<form [formGroup]="itemForm" (ngSubmit)="submit()">
+    <div fxLayout="row wrap" fxLayout.lt-sm="column">
+
+        <div fxFlex="50"  class="pr-1">
+            <mat-form-field class="full-width">
+                <input
+                        matInput
+                        type="text"
+                        name="dni"
+                        [formControl]="itemForm.controls['dni']"
+                        placeholder="DNI">
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="50"  class="pr-1">
+            <mat-form-field class="full-width">
+                <input matInput [matDatepicker]="picker" placeholder="Vencimiento Licencia Conducir">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="50"  class="pr-1">
+            <div class="mb-1">
+                <div ng2FileDrop
+                     [ngClass]="{'dz-file-over': hasBaseDropZoneOver}"
+                     (fileOver)="fileOverBase($event)"
+                     [uploader]="uploader"
+                     class="fileupload-drop-zone mb-24">
+                    Foto DNI
+                </div>
+            </div>
+        </div>
+
+        <div fxFlex="50"  class="pr-1">
+            <div class="mb-1">
+                <div ng2FileDrop
+                     [ngClass]="{'dz-file-over': hasBaseDropZoneOver}"
+                     (fileOver)="fileOverBase($event)"
+                     [uploader]="uploader"
+                     class="fileupload-drop-zone mb-24">
+                    Foto Licencia Conducir
+                </div>
+            </div>
+        </div>
+
+        <div fxFlex="50"  class="pr-1">
+            <mat-form-field class="full-width">
+                <mat-label>Tipo de Licencia</mat-label>
+                <mat-select disableRipple>
+                    <mat-option value="1">Option 1</mat-option>
+                    <mat-option value="2">Option 2</mat-option>
+                    <mat-option value="3">Option 3</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="50"  class="pr-1">
+            <mat-form-field class="full-width">
+                <mat-label>Tipo de Licencia</mat-label>
+                <mat-select disableRipple>
+                    <mat-option value="1">Option 1</mat-option>
+                    <mat-option value="2">Option 2</mat-option>
+                    <mat-option value="3">Option 3</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="50"  class="pr-1">
+            <mat-form-field class="full-width">
+                <mat-label>Tipo de Licencia</mat-label>
+                <mat-select disableRipple>
+                    <mat-option value="1">Option 1</mat-option>
+                    <mat-option value="2">Option 2</mat-option>
+                    <mat-option value="3">Option 3</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="50"  class="pr-1">
+            <mat-form-field class="full-width">
+                <input
+                        matInput
+                        type="text"
+                        name="nroLlaveMicroTrack"
+                        [formControl]="itemForm.controls['nroLlaveMicroTrack']"
+                        placeholder="Numero Llave MicroTrack">
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="100" class="mt-1">
+            <button mat-raised-button color="primary" [disabled]="itemForm.invalid">{{ "GUARDAR" }}</button>
+            <span fxFlex></span>
+            <button mat-button color="warn" type="button" (click)="dialogRef.close(false)">CANCELAR</button>
+        </div>
+    </div>
+</form>
