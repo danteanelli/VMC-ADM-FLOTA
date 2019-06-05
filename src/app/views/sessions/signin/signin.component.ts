@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatProgressBar, MatButton } from '@angular/material';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
 
-import { UsuarioModel } from '../../../models/usuario.model';
+import { Usuario } from '../../../models/usuario.model';
 
 import { LoginService, AuthService, PrincipalService } from '../../../core/auth';
 import { UtilityService } from '../../../core/services';
@@ -13,10 +13,11 @@ import { UtilityService } from '../../../core/services';
     styleUrls: ['./signin.component.css']
 })
 export class SigninComponent implements OnInit {
+
     @ViewChild(MatProgressBar) progressBar: MatProgressBar;
     @ViewChild(MatButton) submitButton: MatButton;
 
-    usuario: UsuarioModel;
+    usuario: Usuario;
     authenticationError: boolean;
 
     signinForm: FormGroup;
@@ -25,19 +26,28 @@ export class SigninComponent implements OnInit {
                 private authService: AuthService,
                 private utilityService: UtilityService,
                 private principalService: PrincipalService) {
-        this.usuario = new UsuarioModel();
+        this.usuario = new Usuario();
     }
 
     ngOnInit() {
+        this.createForm();
+    }
+
+    createForm() {
+        this.signinForm = new FormGroup({
+            username: new FormControl('', [Validators.required, Validators.email]),
+            password: new FormControl('', Validators.required),
+            rememberMe: new FormControl(false)
+        });
     }
 
     signin() {
-        console.log(this.usuario);
-        if (this.usuario.email == null || this.usuario.password == null) {
-            console.log('Error Login', 'Username o password vacías!', 'error');
-            return;
-        }
-        this.loginService.login(this.usuario).subscribe(
+        const user = Object.assign({}, this.usuario, this.signinForm.value);
+        console.log(user);
+
+        this.submitButton.disabled = true;
+        this.progressBar.mode = 'indeterminate';
+        this.loginService.login(user).subscribe(
             result => {
                 this.authService.guardarUsuario(result.access_token);
                 this.authService.guardarToken(result.access_token);
@@ -49,11 +59,7 @@ export class SigninComponent implements OnInit {
             },
             error => this.authenticationError = true
         );
-        const signinData = this.signinForm.value
-        console.log(signinData);
 
-        this.submitButton.disabled = true;
-        this.progressBar.mode = 'indeterminate';
     }
 
 }

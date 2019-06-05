@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { AdminLayoutComponent } from './shared/components/layouts/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './shared/components/layouts/auth-layout/auth-layout.component';
-import { AuthGuard } from './shared/services/auth/auth.guard';
+import { AuthGuard } from './core/guards/auth.guard';
 
 export const rootRouterConfig: Routes = [
     {
@@ -34,6 +34,11 @@ export const rootRouterConfig: Routes = [
                 path: 'vehiculo',
                 loadChildren: './views/vehiculos-management/vehiculos-management.module#VehiculosManagementModule',
                 data: { title: 'Vehiculo', breadcrumb: 'VEHICULO'}
+            },
+            {
+                path: 'chofer',
+                loadChildren: './views/choferes-management/choferes-management.module#ChoferesManagementModule',
+                data: { title: 'Chofer', breadcrumb: 'CHOFER'}
             },
             {
                 path: 'others',

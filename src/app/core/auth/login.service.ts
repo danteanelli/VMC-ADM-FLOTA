@@ -3,9 +3,9 @@ import { Observable } from 'rxjs';
 
 import { PrincipalService } from './principal.service';
 import { AuthService } from './auth.service';
-import { UtilityService } from '../services/utility.service';
+import { UtilityService } from '../services';
 
-import { UsuarioModel } from '../../models/usuario.model';
+import { Usuario } from '../../models/usuario.model';
 
 @Injectable({
     providedIn: 'root'
@@ -17,7 +17,7 @@ export class LoginService {
                 private utilityService: UtilityService) {
     }
 
-    login(usuario: UsuarioModel): Observable<any> {
+    login(usuario: Usuario): Observable<any> {
         return this.authService.login(usuario);
     }
 

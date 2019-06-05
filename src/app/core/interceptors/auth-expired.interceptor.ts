@@ -7,6 +7,7 @@ import { LoginService } from '../auth';
 
 @Injectable()
 export class AuthExpiredInterceptor implements HttpInterceptor {
+
     constructor(private loginService: LoginService) {}
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {

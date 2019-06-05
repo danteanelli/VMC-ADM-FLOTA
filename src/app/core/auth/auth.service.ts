@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { UsuarioModel } from '../../models/usuario.model';
+import { Usuario } from '../../models/usuario.model';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -8,19 +8,19 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
-    private _usuario: UsuarioModel;
+    private _usuario: Usuario;
     private _token: string;
 
     constructor(private http: HttpClient) { }
 
-    public get usuario(): UsuarioModel {
+    public get usuario(): Usuario {
         if (this._usuario != null) {
             return this._usuario;
         } else if (this._usuario == null && sessionStorage.getItem('usuario') != null) {
-            this._usuario = JSON.parse(sessionStorage.getItem('usuario')) as UsuarioModel;
+            this._usuario = JSON.parse(sessionStorage.getItem('usuario')) as Usuario;
             return this._usuario;
         }
-        return new UsuarioModel();
+        return new Usuario();
     }
 
     public get token(): string {
@@ -33,10 +33,10 @@ export class AuthService {
         return null;
     }
 
-    login(usuario: UsuarioModel): Observable<UsuarioModel> {
+    login(usuario: Usuario): Observable<Usuario> {
         const urlEndpoint =  'http://localhost:8080/oauth/token';
 
-        const credenciales = btoa('appangular' + ':' + '123456');
+        const credenciales = btoa('angularapp' + ':' + '123456');
 
         const httpHeaders = new HttpHeaders({
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -45,7 +45,7 @@ export class AuthService {
 
         let params = new URLSearchParams();
         params.set('grant_type', 'password');
-        params.set('username', usuario.email);
+        params.set('username', usuario.username);
         params.set('password', usuario.password);
         console.log(params.toString());
         return this.http.post<any>(urlEndpoint, params.toString(), { headers: httpHeaders });
@@ -53,8 +53,8 @@ export class AuthService {
 
     guardarUsuario(accessToken: string): void {
         let payload = this.obtenerDatosToken(accessToken);
-        this._usuario = new UsuarioModel();
-        this._usuario.email = payload.email;
+        this._usuario = new Usuario();
+        this._usuario.username = payload.email;
         sessionStorage.setItem('usuario', JSON.stringify(this._usuario));
     }
 
@@ -84,5 +84,6 @@ export class AuthService {
         sessionStorage.clear();
         sessionStorage.removeItem('token');
         sessionStorage.removeItem('usuario');
+        // this.principalService.cleanAuthentication();
     }
 }

@@ -48,30 +48,103 @@ export class NavigationService {
             sub: [
                 { name: 'Listado Vehiculos', state: 'listado-vehiculos' },
                 { name: 'Tipos de Vehiculo/Equipo', state: 'tipos-vehiculos' },
-                { name: 'SubTipos de Vehiculo/Equipo', state: 'subtipos-vehiculos' }
+                { name: 'SubTipos de Vehiculo/Equipo', state: 'subtipos-vehiculos' },
+                { name: 'Listado de Marcas', state: 'subtipos-vehiculos' },
+                { name: 'Listado de Modelos', state: 'subtipos-vehiculos' }
             ]
         },
         {
             name: 'Choferes',
-            type: 'link',
+            type: 'dropDown',
             tooltip: 'Choferes',
+            icon: 'dashboard',
+            state: 'chofer',
+            sub: [
+                { name: 'Listado Choferes', state: 'listado-choferes' },
+                { name: 'Tipos de Licencia', state: 'tipos-licencia' }
+            ]
+        },
+        {
+            name: 'Usuarios',
+            type: 'dropDown',
+            tooltip: 'Usuarios',
+            icon: 'dashboard',
+            state: 'chofer',
+            sub: [
+                { name: 'Listado de Usuarios', state: 'listado-choferes' },
+                { name: 'Listado de Perfiles', state: 'tipos-licencia' }
+            ]
+        },
+        {
+            name: 'Centro de Costos',
+            type: 'link',
+            tooltip: 'Dashboard',
             icon: 'dashboard',
             state: 'dashboard/home'
         },
         {
-            name: "BLANK",
-            type: "link",
-            tooltip: "Dashboard",
-            icon: "dashboard",
-            state: "others/blank"
+            name: 'Obras',
+            type: 'link',
+            tooltip: 'Dashboard',
+            icon: 'dashboard',
+            state: 'dashboard/home'
         },
         {
-            name: "DOC",
-            type: "extLink",
-            tooltip: "Documentation",
-            icon: "library_books",
-            state: "http://demos.ui-lib.com/egret-doc/"
+            name: 'Talleres',
+            type: 'link',
+            tooltip: 'Dashboard',
+            icon: 'dashboard',
+            state: 'dashboard/home'
+        },
+        {
+            name: 'Items de Mantenimiento',
+            type: 'link',
+            tooltip: 'Dashboard',
+            icon: 'dashboard',
+            state: 'dashboard/home'
+        },
+        {
+            name: 'Precios de Alquiler',
+            type: 'link',
+            tooltip: 'Dashboard',
+            icon: 'dashboard',
+            state: 'dashboard/home'
+        },
+        {
+            name: 'Costos',
+            type: 'link',
+            tooltip: 'Dashboard',
+            icon: 'dashboard',
+            state: 'dashboard/home'
+        },
+        {
+            name: 'Sistema de Alquileres',
+            type: 'link',
+            tooltip: 'Dashboard',
+            icon: 'dashboard',
+            state: 'dashboard/home'
+        },
+        {
+            name: 'Reportes',
+            type: 'link',
+            tooltip: 'Dashboard',
+            icon: 'dashboard',
+            state: 'dashboard/home'
         }
+        // {
+        //     name: "BLANK",
+        //     type: "link",
+        //     tooltip: "Dashboard",
+        //     icon: "dashboard",
+        //     state: "others/blank"
+        // },
+        // {
+        //     name: "DOC",
+        //     type: "extLink",
+        //     tooltip: "Documentation",
+        //     icon: "library_books",
+        //     state: "http://demos.ui-lib.com/egret-doc/"
+        // }
     ];
 
     separatorMenu: IMenuItem[] = [

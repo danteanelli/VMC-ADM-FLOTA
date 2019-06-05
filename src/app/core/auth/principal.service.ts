@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject, of } from 'rxjs';
-import { tap } from 'rxjs/operators';
 
-import { UtilityService } from '../services/utility.service';
-import { AuthService } from './auth.service';
-import { UsuarioModel } from '../../models/usuario.model';
+import { UtilityService } from '../services';
+import { Usuario } from '../../models/usuario.model';
 import { AccountService } from './account.service';
 
 @Injectable({
@@ -12,8 +10,8 @@ import { AccountService } from './account.service';
 })
 export class PrincipalService {
 
-    private userIdentity: UsuarioModel;
-    private authenticationState = new Subject<UsuarioModel>();
+    private userIdentity: Usuario;
+    private authenticationState = new Subject<Usuario>();
 
     authenticated = true;
 
@@ -26,7 +24,7 @@ export class PrincipalService {
         this.authenticationState.next(this.userIdentity);
     }
 
-    getIdentity(): Observable<UsuarioModel> {
+    getIdentity(): Observable<Usuario> {
         if (this.userIdentity) return of(this.userIdentity);
 
         if (this.accountService.get()) {
@@ -38,7 +36,7 @@ export class PrincipalService {
         }
     }
 
-    getAuthenticationState(): Observable<UsuarioModel> {
+    getAuthenticationState(): Observable<Usuario> {
         return this.authenticationState.asObservable();
     }
 }
