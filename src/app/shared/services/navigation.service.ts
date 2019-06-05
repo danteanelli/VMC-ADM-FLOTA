@@ -69,10 +69,10 @@ export class NavigationService {
             type: 'dropDown',
             tooltip: 'Usuarios',
             icon: 'dashboard',
-            state: 'chofer',
+            state: 'usuario',
             sub: [
-                { name: 'Listado de Usuarios', state: 'listado-choferes' },
-                { name: 'Listado de Perfiles', state: 'tipos-licencia' }
+                { name: 'Listado de Usuarios', state: 'listado-usuarios' },
+                { name: 'Listado de Perfiles', state: 'listado-perfiles' }
             ]
         },
         {

@@ -41,6 +41,11 @@ export const rootRouterConfig: Routes = [
                 data: { title: 'Chofer', breadcrumb: 'CHOFER'}
             },
             {
+                path: 'usuario',
+                loadChildren: './views/usuarios-management/usuarios-management.module#UsuariosManagementModule',
+                data: { title: 'Usuario', breadcrumb: 'USUARIO'}
+            },
+            {
                 path: 'others',
                 loadChildren: './views/others/others.module#OthersModule',
                 data: { title: 'Others', breadcrumb: 'OTHERS'}
