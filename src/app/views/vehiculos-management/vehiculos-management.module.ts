@@ -33,7 +33,7 @@ import { TipoVehiculoFormManagementComponent } from './tipos-vehiculos/tipo-vehi
 import { MarcasManagementListComponent } from './marcas-management/marcas-management-list/marcas-management-list.component';
 import { MarcasManagementFormComponent } from './marcas-management/marcas-management-form/marcas-management-form.component';
 import { ModelosManagementListComponent } from './modelos-management/modelos-management-list/modelos-management-list.component';
-import { ModelosManagementFormComponent } from './modelos-management-form/modelos-management-form.component';
+import { ModelosManagementFormComponent } from './modelos-management/modelos-management-form/modelos-management-form.component';
 
 // Servicios
 import { VehiculosService } from './vehiculos.service';

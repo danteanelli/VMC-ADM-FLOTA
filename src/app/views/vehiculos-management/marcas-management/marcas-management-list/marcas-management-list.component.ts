@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {MatDialog, MatDialogRef, MatSnackBar} from '@angular/material';
+import { MatDialog, MatDialogRef, MatSnackBar } from '@angular/material';
 import { AppConfirmService } from '../../../../shared/services/app-confirm/app-confirm.service';
 import { AppLoaderService } from '../../../../shared/services/app-loader/app-loader.service';
 import { Subscription} from 'rxjs';
