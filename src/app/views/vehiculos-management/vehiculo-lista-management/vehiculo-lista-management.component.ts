@@ -31,7 +31,7 @@ export class VehiculoListaManagementComponent implements OnInit {
     openPopUp(data: any = {}, isNew?) {
         let title = isNew ? 'Agregar Vehiculo/Equipo' : 'Modificar Vehiculo/Equipo';
         let dialogRef: MatDialogRef<any> = this.dialog.open(VehiculoFormManagementComponent, {
-            width: '720px',
+            width: '1200px',
             disableClose: true,
             data: { title: title, payload: data }
         });
