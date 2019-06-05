@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 // Componentes
 import { ChoferesManagementListComponent } from './choferes-management-list/choferes-management-list.component';
@@ -14,7 +15,10 @@ import { choferesRoutes } from './choferes-management.routing';
 // Modulos
 import { SharedMaterialModule } from '../../shared/shared-material.module';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import {ReactiveFormsModule} from '@angular/forms';
+
+// Servicios
+import { TiposLicenciaManagementService } from './tipos-licencia-management/tipos-licencia-management.service';
+import { ChoferesManagementService } from './choferes-management.service';
 
 @NgModule({
     declarations: [
@@ -33,6 +37,10 @@ import {ReactiveFormsModule} from '@angular/forms';
     entryComponents: [
         ChoferesManagementFormComponent,
         TiposLicenciaManagementFormComponent
+    ],
+    providers: [
+        TiposLicenciaManagementService,
+        ChoferesManagementService
     ]
 })
 export class ChoferesManagementModule { }

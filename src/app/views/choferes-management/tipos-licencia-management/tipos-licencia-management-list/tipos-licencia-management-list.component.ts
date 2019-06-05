@@ -47,15 +47,15 @@ export class TiposLicenciaManagementListComponent implements OnInit, OnDestroy {
     getTiposLicencia() {
         this.getItemSub = this.tiposLicenciaService.getAll().subscribe(data => {
             console.log(data);
-            this.tiposLicencias = data;
-            console.log(this.tiposLicencias);
+            this.items = data;
+            console.log(this.items);
         },
         error => {
             console.log('error al obtener las licencias');
         });
     }
 
-    openPopUp(data: any = {}, isNew?) {
+    openPopUp(data: any = {} , isNew?) {
         let title = isNew ? 'Agregar Tipo de Licencia' : 'Modificar Tipo de Licencia';
         let dialogRef: MatDialogRef<any> = this.dialog.open(TiposLicenciaManagementFormComponent, {
             width: '720px',
@@ -83,6 +83,21 @@ export class TiposLicenciaManagementListComponent implements OnInit, OnDestroy {
                              this.loader.close();
                              this.snack.open('Member Updated!', 'OK', { duration: 4000 });
                          });
+                }
+            });
+    }
+
+    deleteItem(row) {
+        this.confirmService.confirm({message: `Delete ${row.nombre}?`})
+            .subscribe(res => {
+                if (res) {
+                    this.loader.open();
+                    this.tiposLicenciaService.delete(row)
+                        .subscribe(data => {
+                            this.items = data;
+                            this.loader.close();
+                            this.snack.open('Member deleted!', 'OK', { duration: 4000 });
+                        });
                 }
             });
     }
