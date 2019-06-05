@@ -6,14 +6,17 @@ import { AppLoaderService } from '../../../../shared/services/app-loader/app-loa
 import { Subscription } from 'rxjs';
 import { egretAnimations } from '../../../../shared/animations/egret-animations';
 
+// Servicio
 import { VehiculosService } from '../../vehiculos.service';
-import {VehiculoFormManagementComponent} from '../../vehiculo-form-management/vehiculo-form-management.component';
-import {TipoVehiculoFormManagementComponent} from '../tipo-vehiculo-form-management/tipo-vehiculo-form-management.component';
+
+// Componente
+import { TipoVehiculoFormManagementComponent } from '../tipo-vehiculo-form-management/tipo-vehiculo-form-management.component';
 
 @Component({
     selector: 'app-tipo-vehiculo-lista-management',
     templateUrl: './tipo-vehiculo-lista-management.component.html',
-    styleUrls: ['./tipo-vehiculo-lista-management.component.scss']
+    styleUrls: ['./tipo-vehiculo-lista-management.component.scss'],
+    animations: egretAnimations
 })
 export class TipoVehiculoListaManagementComponent implements OnInit {
 
@@ -30,7 +33,7 @@ export class TipoVehiculoListaManagementComponent implements OnInit {
     }
 
     openPopUp(data: any = {}, isNew?) {
-        let title = isNew ? 'Agregar Tipo Vehiculo/Equipo' : 'Modificar Tipo Vehiculo/Equipo';
+        let title = isNew ? 'Agregar Tipo de Vehiculo/Equipo' : 'Modificar Tipo de Vehiculo/Equipo';
         let dialogRef: MatDialogRef<any> = this.dialog.open(TipoVehiculoFormManagementComponent, {
             width: '720px',
             disableClose: true,

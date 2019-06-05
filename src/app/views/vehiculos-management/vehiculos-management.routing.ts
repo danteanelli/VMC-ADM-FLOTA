@@ -3,6 +3,8 @@ import { Routes } from '@angular/router';
 import { VehiculoListaManagementComponent } from './vehiculo-lista-management/vehiculo-lista-management.component';
 import { TipoVehiculoListaManagementComponent } from './tipos-vehiculos/tipo-vehiculo-lista-management/tipo-vehiculo-lista-management.component';
 import { SubTipoVehiculoListaManagementComponent } from './subtipos-vehiculos/sub-tipo-vehiculo-lista-management/sub-tipo-vehiculo-lista-management.component';
+import {MarcasManagementListComponent} from './marcas-management/marcas-management-list/marcas-management-list.component';
+import {ModelosManagementListComponent} from './modelos-management/modelos-management-list/modelos-management-list.component';
 
 export const VehiculoRoutes: Routes = [
     {
@@ -25,12 +27,12 @@ export const VehiculoRoutes: Routes = [
             },
             {
                 path: 'listado-marcas',
-                component: SubTipoVehiculoListaManagementComponent,
+                component: MarcasManagementListComponent,
                 data: { title: 'Lista Marcas', breadcrumb: 'LISTA MARCAS' }
             },
             {
                 path: 'listado-modelos',
-                component: SubTipoVehiculoListaManagementComponent,
+                component: ModelosManagementListComponent,
                 data: { title: 'Lista Modelos', breadcrumb: 'LISTA MODELOS' }
             }
         ]

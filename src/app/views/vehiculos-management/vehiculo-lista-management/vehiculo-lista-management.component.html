@@ -7,28 +7,94 @@
         <ngx-datatable
                 class="material ml-0 mr-0"
                 [rows]="items"
-                [columnMode]="'force'"
+                columnMode="force"
                 [headerHeight]="50"
                 [footerHeight]="50"
-                [scrollbarH]="true"
                 [limit]="10"
-                [rowHeight]="50">
-            <ngx-datatable-column name="Name" [flexGrow]="1">
+                [rowHeight]="50"
+                [scrollbarV]="true"
+                [scrollbarH]="true">
+            <ngx-datatable-column name="ID" [flexGrow]="1" [width]="30">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                    {{ row?.name }}
+                    {{ row?.id }}
                 </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column name="Age" [flexGrow]="1">
+            <ngx-datatable-column name="Tipo Equipo" [flexGrow]="1" [width]="100">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{ row?.id }}
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="SubTipo Equipo" [flexGrow]="1" [width]="100">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{ row?.id }}
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Dominio" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                     {{ row?.age }}
                 </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column name="Balance" [flexGrow]="1">
+            <ngx-datatable-column name="Año" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                    {{ row?.balance | currency }}
+                    {{ row?.balance }}
                 </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column name="Company" [flexGrow]="1">
+            <ngx-datatable-column name="Marca" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{ row?.company }}
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Modelo" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{ row?.company }}
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Codigo" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{ row?.company }}
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Codigo QR" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{ row?.company }}
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Nro Vin" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{ row?.company }}
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Nro Chasis" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{ row?.company }}
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Nro Motor" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{ row?.company }}
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Nro Poliza Seguro" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{ row?.company }}
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Nro Certificacion Veritas" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{ row?.company }}
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Vencimiento Poliza Seguro" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{ row?.company }}
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Vencimiento VTV" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{ row?.company }}
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Vto BureauVerita" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                     {{ row?.company }}
                 </ng-template>
@@ -38,7 +104,37 @@
                     <mat-chip mat-sm-chip [color]="'primary'" [selected]="row.isActive">{{row.isActive ? 'active' : 'inactive'}}</mat-chip>
                 </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column name="Actions" [flexGrow]="1">
+            <ngx-datatable-column name="Foto" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{ row?.company }}
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Tracking Dispositivo" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{ row?.company }}
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Caracteristicas" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{ row?.largo }}
+                    {{ row?.ancho }}
+                    {{ row?.tara }}
+                    {{ row?.alto }}
+                    {{ row?.capacidad }}
+                    {{ row?.cantidadEje }}
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Neumatico" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{ row?.company }}
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Observaciones" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{ row?.company }}
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Acciones" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                     <button mat-icon-button mat-sm-button color="primary" class="mr-1" (click)="openPopUp(row)"><mat-icon>edit</mat-icon></button>
                     <button mat-icon-button mat-sm-button color="warn" (click)="deleteItem(row)"><mat-icon>delete</mat-icon></button>

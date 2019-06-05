@@ -6,12 +6,17 @@ import { AppLoaderService } from '../../../../shared/services/app-loader/app-loa
 import { Subscription } from 'rxjs';
 import { egretAnimations } from '../../../../shared/animations/egret-animations';
 
+// Servicio
 import { VehiculosService } from '../../vehiculos.service';
+
+// Componente
 import { SubTipoVehiculoFormManagementComponent } from '../sub-tipo-vehiculo-form-management/sub-tipo-vehiculo-form-management.component';
+
 @Component({
     selector: 'app-sub-tipo-vehiculo-lista-management',
     templateUrl: './sub-tipo-vehiculo-lista-management.component.html',
-    styleUrls: ['./sub-tipo-vehiculo-lista-management.component.scss']
+    styleUrls: ['./sub-tipo-vehiculo-lista-management.component.scss'],
+    animations: egretAnimations
 })
 export class SubTipoVehiculoListaManagementComponent implements OnInit {
 
@@ -28,7 +33,7 @@ export class SubTipoVehiculoListaManagementComponent implements OnInit {
     }
 
     openPopUp(data: any = {}, isNew?) {
-        let title = isNew ? 'Agregar Vehiculo/Equipo' : 'Modificar Vehiculo/Equipo';
+        let title = isNew ? 'Agregar Subtipo de Vehiculo/Equipo' : 'Modificar Subtipo de Vehiculo/Equipo';
         let dialogRef: MatDialogRef<any> = this.dialog.open(SubTipoVehiculoFormManagementComponent, {
             width: '720px',
             disableClose: true,

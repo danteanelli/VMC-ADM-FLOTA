@@ -49,8 +49,8 @@ export class NavigationService {
                 { name: 'Listado Vehiculos', state: 'listado-vehiculos' },
                 { name: 'Tipos de Vehiculo/Equipo', state: 'tipos-vehiculos' },
                 { name: 'SubTipos de Vehiculo/Equipo', state: 'subtipos-vehiculos' },
-                { name: 'Listado de Marcas', state: 'subtipos-vehiculos' },
-                { name: 'Listado de Modelos', state: 'subtipos-vehiculos' }
+                { name: 'Listado de Marcas', state: 'listado-marcas' },
+                { name: 'Listado de Modelos', state: 'listado-modelos' }
             ]
         },
         {

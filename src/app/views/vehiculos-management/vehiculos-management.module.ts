@@ -37,6 +37,8 @@ import { ModelosManagementFormComponent } from './modelos-management-form/modelo
 
 // Servicios
 import { VehiculosService } from './vehiculos.service';
+import { MarcasManagementService } from './marcas-management/marcas-management.service';
+import { ModelosManagementService } from './modelos-management/modelos-management.service';
 
 @NgModule({
     imports: [
@@ -78,6 +80,10 @@ import { VehiculosService } from './vehiculos.service';
         MarcasManagementFormComponent,
         ModelosManagementFormComponent
     ],
-    providers: [VehiculosService]
+    providers: [
+        VehiculosService,
+        MarcasManagementService,
+        ModelosManagementService
+    ]
 })
 export class VehiculosManagementModule { }
