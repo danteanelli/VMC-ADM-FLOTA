@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { MatDialogRef, MatDialog, MatSnackBar } from '@angular/material';
 import { AppConfirmService } from '../../../../shared/services/app-confirm/app-confirm.service';
 import { AppLoaderService } from '../../../../shared/services/app-loader/app-loader.service';
@@ -20,7 +20,7 @@ import { TipoLicencia } from '../../../../models/tipoLicencia.model';
     styleUrls: ['./tipos-licencia-management-list.component.scss'],
     animations: egretAnimations
 })
-export class TiposLicenciaManagementListComponent implements OnInit {
+export class TiposLicenciaManagementListComponent implements OnInit, OnDestroy {
 
     tiposLicencias = Array<TipoLicencia>();
 
@@ -35,6 +35,24 @@ export class TiposLicenciaManagementListComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.getTiposLicencia();
+    }
+
+    ngOnDestroy(): void {
+        if (this.getItemSub) {
+            this.getItemSub.unsubscribe();
+        }
+    }
+
+    getTiposLicencia() {
+        this.getItemSub = this.tiposLicenciaService.getAll().subscribe(data => {
+            console.log(data);
+            this.tiposLicencias = data;
+            console.log(this.tiposLicencias);
+        },
+        error => {
+            console.log('error al obtener las licencias');
+        });
     }
 
     openPopUp(data: any = {}, isNew?) {
@@ -52,19 +70,19 @@ export class TiposLicenciaManagementListComponent implements OnInit {
                 }
                 this.loader.open();
                 if (isNew) {
-                    // this.vehiculoService.addItem(res)
-                    //     .subscribe( data => {
-                    //         this.items = data;
-                    //         this.loader.close();
-                    //         this.snack.open('Member Added!', 'OK', { duration: 4000 });
-                    //     });
+                    this.tiposLicenciaService.add(res)
+                        .subscribe( data => {
+                             this.items = data;
+                             this.loader.close();
+                             this.snack.open('Member Added!', 'OK', { duration: 4000 });
+                        });
                 } else {
-                    // this.vehiculoService.updateItem(data._id, res)
-                    //     .subscribe( data => {
-                    //         this.items = data;
-                    //         this.loader.close();
-                    //         this.snack.open('Member Updated!', 'OK', { duration: 4000 });
-                    //     });
+                    this.tiposLicenciaService.update(data.id, res)
+                         .subscribe( data => {
+                             this.items = data;
+                             this.loader.close();
+                             this.snack.open('Member Updated!', 'OK', { duration: 4000 });
+                         });
                 }
             });
     }
