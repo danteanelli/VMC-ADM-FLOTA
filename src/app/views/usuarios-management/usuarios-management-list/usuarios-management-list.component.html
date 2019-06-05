@@ -1,3 +1,59 @@
-<p>
-  usuarios-management-list works!
-</p>
+<div class="m-333">
+    <!-- <span fxFlex></span> -->
+    <button mat-raised-button class="mb-05" color="primary" (click)="openPopUp({}, true)">{{ "Agregar Usuario" }}</button>
+</div>
+<mat-card class="p-0" [@animate]="{value:'*',params:{y:'50px',delay:'300ms'}}">
+    <mat-card-content class="p-0">
+        <ngx-datatable
+                class="material ml-0 mr-0"
+                [rows]="items"
+                [columnMode]="'force'"
+                [headerHeight]="50"
+                [footerHeight]="50"
+                [scrollbarH]="true"
+                [limit]="10"
+                [rowHeight]="50">
+            <ngx-datatable-column name="ID" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{ row?.id }}
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Nombre y Apellido" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{ row?.nombre }} {{ row?.apellido }}
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Empressa" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{ row?.nombre }}
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Email" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{ row?.nombre }}
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Habilitado" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{ row?.nombre }}
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Nro Celular" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{ row?.nombre }}
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Perfil" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{ row?.nombre }}
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Acciones" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    <button mat-icon-button mat-sm-button color="primary" class="mr-1" (click)="openPopUp(row)"><mat-icon>edit</mat-icon></button>
+                    <button mat-icon-button mat-sm-button color="warn" (click)="deleteItem(row)"><mat-icon>delete</mat-icon></button>
+                </ng-template>
+            </ngx-datatable-column>
+        </ngx-datatable>
+    </mat-card-content>
+</mat-card>
