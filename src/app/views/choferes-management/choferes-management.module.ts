@@ -11,6 +11,11 @@ import { TiposLicenciaManagementFormComponent } from './tipos-licencia-managemen
 // Ruta
 import { choferesRoutes } from './choferes-management.routing';
 
+// Modulos
+import { SharedMaterialModule } from '../../shared/shared-material.module';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import {ReactiveFormsModule} from '@angular/forms';
+
 @NgModule({
     declarations: [
         ChoferesManagementListComponent,
@@ -20,7 +25,14 @@ import { choferesRoutes } from './choferes-management.routing';
     ],
     imports: [
         CommonModule,
-        RouterModule.forChild(choferesRoutes)
+        RouterModule.forChild(choferesRoutes),
+        SharedMaterialModule,
+        NgxDatatableModule,
+        ReactiveFormsModule
+    ],
+    entryComponents: [
+        ChoferesManagementFormComponent,
+        TiposLicenciaManagementFormComponent
     ]
 })
 export class ChoferesManagementModule { }
