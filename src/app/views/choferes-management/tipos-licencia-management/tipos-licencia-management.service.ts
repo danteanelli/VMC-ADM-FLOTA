@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { RequestService } from '../../../core/services';
 import { Observable } from 'rxjs';
-import {TipoLicencia} from '../../../models/tipoLicencia.model';
+import { TipoLicencia } from '../../../models/tipoLicencia.model';
 
 @Injectable({
     providedIn: 'root'
