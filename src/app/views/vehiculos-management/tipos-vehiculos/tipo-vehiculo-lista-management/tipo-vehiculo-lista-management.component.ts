@@ -7,10 +7,13 @@ import { Subscription } from 'rxjs';
 import { egretAnimations } from '../../../../shared/animations/egret-animations';
 
 // Servicio
-import { VehiculosService } from '../../vehiculos.service';
+import { VehiculosManagementService } from '../../vehiculos-management.service';
 
 // Componente
 import { TipoVehiculoFormManagementComponent } from '../tipo-vehiculo-form-management/tipo-vehiculo-form-management.component';
+
+// Modelo
+import { TipoVehiculo } from '../../../../models/tipoVehiculo.model';
 
 @Component({
     selector: 'app-tipo-vehiculo-lista-management',
@@ -20,14 +23,14 @@ import { TipoVehiculoFormManagementComponent } from '../tipo-vehiculo-form-manag
 })
 export class TipoVehiculoListaManagementComponent implements OnInit {
 
-    items: any[];
+    items: TipoVehiculo[];
     getItemSub: Subscription;
 
     constructor(private dialog: MatDialog,
                 private snack: MatSnackBar,
                 private confirmService: AppConfirmService,
                 private loader: AppLoaderService,
-                private vehiculoService: VehiculosService) { }
+                private vehiculoService: VehiculosManagementService) { }
 
     ngOnInit() {
     }

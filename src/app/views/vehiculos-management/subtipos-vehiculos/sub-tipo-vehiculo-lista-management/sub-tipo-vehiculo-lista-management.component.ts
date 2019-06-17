@@ -7,7 +7,7 @@ import { Subscription } from 'rxjs';
 import { egretAnimations } from '../../../../shared/animations/egret-animations';
 
 // Servicio
-import { VehiculosService } from '../../vehiculos.service';
+import { VehiculosManagementService } from '../../vehiculos-management.service';
 
 // Componente
 import { SubTipoVehiculoFormManagementComponent } from '../sub-tipo-vehiculo-form-management/sub-tipo-vehiculo-form-management.component';
@@ -27,7 +27,7 @@ export class SubTipoVehiculoListaManagementComponent implements OnInit {
                 private snack: MatSnackBar,
                 private confirmService: AppConfirmService,
                 private loader: AppLoaderService,
-                private vehiculoService: VehiculosService) { }
+                private vehiculoService: VehiculosManagementService) { }
 
     ngOnInit() {
     }

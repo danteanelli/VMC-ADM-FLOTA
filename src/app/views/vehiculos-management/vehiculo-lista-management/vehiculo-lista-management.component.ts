@@ -6,7 +6,7 @@ import { VehiculoFormManagementComponent } from '../vehiculo-form-management/veh
 import { Subscription } from 'rxjs';
 import { egretAnimations } from '../../../shared/animations/egret-animations';
 
-import { VehiculosService } from '../vehiculos.service';
+import { VehiculosManagementService } from '../vehiculos-management.service';
 
 @Component({
     selector: 'app-vehiculo-lista-management',
@@ -23,7 +23,7 @@ export class VehiculoListaManagementComponent implements OnInit {
                 private snack: MatSnackBar,
                 private confirmService: AppConfirmService,
                 private loader: AppLoaderService,
-                private vehiculoService: VehiculosService) { }
+                private vehiculoService: VehiculosManagementService) { }
 
     ngOnInit() {
     }

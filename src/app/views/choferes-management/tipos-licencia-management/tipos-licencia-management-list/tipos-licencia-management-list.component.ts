@@ -22,9 +22,7 @@ import { TipoLicencia } from '../../../../models/tipoLicencia.model';
 })
 export class TiposLicenciaManagementListComponent implements OnInit, OnDestroy {
 
-    tiposLicencias = Array<TipoLicencia>();
-
-    items: any[];
+    items: TipoLicencia[];
     getItemSub: Subscription;
 
     constructor(private dialog: MatDialog,
@@ -45,10 +43,12 @@ export class TiposLicenciaManagementListComponent implements OnInit, OnDestroy {
     }
 
     getTiposLicencia() {
+        /*setTimeout(() => {
+            this.loader.open('Cargando...');
+        });*/
         this.getItemSub = this.tiposLicenciaService.getAll().subscribe(data => {
-            console.log(data);
             this.items = data;
-            console.log(this.items);
+            this.loader.close();
         },
         error => {
             console.log('error al obtener las licencias');

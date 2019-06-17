@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { MatDialog, MatDialogRef, MatSnackBar } from '@angular/material';
 import { Subscription } from 'rxjs';
 import { egretAnimations } from '../../../../shared/animations/egret-animations';
@@ -10,6 +10,7 @@ import { ModelosManagementService } from '../modelos-management.service';
 
 // Componentes
 import { ModelosManagementFormComponent } from '../modelos-management-form/modelos-management-form.component';
+import {Modelo} from '../../../../models/modelo.model';
 
 @Component({
     selector: 'app-modelos-management-list',
@@ -17,9 +18,9 @@ import { ModelosManagementFormComponent } from '../modelos-management-form/model
     styleUrls: ['./modelos-management-list.component.scss'],
     animations: egretAnimations
 })
-export class ModelosManagementListComponent implements OnInit {
+export class ModelosManagementListComponent implements OnInit, OnDestroy {
 
-    items: any[];
+    items: Modelo[];
     getItemSub: Subscription;
 
     constructor(private dialog: MatDialog,
@@ -29,6 +30,25 @@ export class ModelosManagementListComponent implements OnInit {
                 private modelosService: ModelosManagementService) { }
 
     ngOnInit() {
+        this.obtenerModelos();
+    }
+
+    ngOnDestroy(): void {
+        if (this.getItemSub) {
+            this.getItemSub.unsubscribe();
+        }
+    }
+
+    obtenerModelos() {
+        this.getItemSub = this.modelosService.getAll().subscribe(data => {
+            this.items = data;
+            this.loader.close();
+        },
+        error => {
+            console.log('error al obtener las marcas');
+            // this.loader.close();
+            this.snack.open('Error al cargar los datos', 'OK', { duration: 4000 });
+        });
     }
 
     openPopUp(data: any = {}, isNew?) {

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class MarcasManagementService {
 
-    marcasURL = '/api/marcas';
+    marcasURL = 'api/marcas';
 
     constructor(private requestService: RequestService) { }
 

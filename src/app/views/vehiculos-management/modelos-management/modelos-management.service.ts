@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ModelosManagementService {
 
-    modelosURL = '/api/modelos';
+    modelosURL = 'api/modelos';
 
     constructor(private requestService: RequestService) { }
 
