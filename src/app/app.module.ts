@@ -28,6 +28,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     suppressScrollX: true
 };
 
+// Interceptores
+import { httpInterceptorProviders } from './core/interceptors';
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -49,6 +52,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         { provide: ErrorHandler, useClass: ErrorHandlerService },
         { provide: HAMMER_GESTURE_CONFIG, useClass: GestureConfig },
         { provide: PERFECT_SCROLLBAR_CONFIG, useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG },
+        httpInterceptorProviders
     ],
     bootstrap: [AppComponent]
 })

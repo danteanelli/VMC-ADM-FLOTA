@@ -43,7 +43,6 @@ export class SigninComponent implements OnInit {
 
     signin() {
         const user = Object.assign({}, this.usuario, this.signinForm.value);
-        console.log(user);
 
         this.submitButton.disabled = true;
         this.progressBar.mode = 'indeterminate';
