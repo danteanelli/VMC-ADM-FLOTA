@@ -7,10 +7,13 @@ import { Subscription } from 'rxjs';
 import { egretAnimations } from '../../../../shared/animations/egret-animations';
 
 // Servicio
-import { VehiculosManagementService } from '../../vehiculos-management.service';
+import { SubtipoVehiculosManagementService } from '../subtipo-vehiculos-management.service';
 
 // Componente
 import { SubTipoVehiculoFormManagementComponent } from '../sub-tipo-vehiculo-form-management/sub-tipo-vehiculo-form-management.component';
+
+// Clase - Modelo
+import { SubTipoVehiculo } from '../../../../models/subTipoVehiculo.model';
 
 @Component({
     selector: 'app-sub-tipo-vehiculo-lista-management',
@@ -20,16 +23,26 @@ import { SubTipoVehiculoFormManagementComponent } from '../sub-tipo-vehiculo-for
 })
 export class SubTipoVehiculoListaManagementComponent implements OnInit {
 
-    items: any[];
+    items: SubTipoVehiculo[];
     getItemSub: Subscription;
 
     constructor(private dialog: MatDialog,
                 private snack: MatSnackBar,
                 private confirmService: AppConfirmService,
                 private loader: AppLoaderService,
-                private vehiculoService: VehiculosManagementService) { }
+                private subTipoService: SubtipoVehiculosManagementService) { }
 
     ngOnInit() {
+        this.getSubTiposVehiculo();
+    }
+
+    getSubTiposVehiculo() {
+        this.subTipoService.getAll().subscribe(data => {
+           this.items = data;
+        },
+        error => {
+
+        });
     }
 
     openPopUp(data: any = {}, isNew?) {
@@ -47,19 +60,19 @@ export class SubTipoVehiculoListaManagementComponent implements OnInit {
                 }
                 this.loader.open();
                 if (isNew) {
-                    // this.vehiculoService.addItem(res)
-                    //     .subscribe( data => {
-                    //         this.items = data;
-                    //         this.loader.close();
-                    //         this.snack.open('Member Added!', 'OK', { duration: 4000 });
-                    //     });
+                    this.subTipoService.add(res)
+                        .subscribe( data => {
+                            this.getSubTiposVehiculo();
+                            this.loader.close();
+                            this.snack.open('Agregado correctamente!', 'OK', { duration: 4000 });
+                        });
                 } else {
-                    // this.vehiculoService.updateItem(data._id, res)
-                    //     .subscribe( data => {
-                    //         this.items = data;
-                    //         this.loader.close();
-                    //         this.snack.open('Member Updated!', 'OK', { duration: 4000 });
-                    //     });
+                    this.subTipoService.update(data.id, res)
+                        .subscribe( data => {
+                            this.getSubTiposVehiculo();
+                            this.loader.close();
+                            this.snack.open('Modificado correctamente!', 'OK', { duration: 4000 });
+                        });
                 }
             });
     }

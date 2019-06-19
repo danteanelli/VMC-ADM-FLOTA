@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { RequestService } from '../../../core/services';
 import { Observable } from 'rxjs';
+import {SubTipoVehiculo} from '../../../models/subTipoVehiculo.model';
 
 @Injectable({
     providedIn: 'root'
@@ -20,11 +21,11 @@ export class SubtipoVehiculosManagementService {
         return this.requestService.get(`${this.subTipoURL}/` + id);
     }
 
-    public add(subtipo: any): Observable<any> {
+    public add(subtipo: SubTipoVehiculo): Observable<SubTipoVehiculo> {
         return this.requestService.post(`${this.subTipoURL}`, subtipo);
     }
 
-    public update(id: any, subtipo: any): Observable<any> {
+    public update(id: any, subtipo: SubTipoVehiculo): Observable<SubTipoVehiculo> {
         return this.requestService.put(`${this.subTipoURL}/${id}`, subtipo);
     }
 

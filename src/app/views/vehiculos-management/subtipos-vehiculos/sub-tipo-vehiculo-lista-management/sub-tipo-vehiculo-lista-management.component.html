@@ -15,17 +15,17 @@
                 [rowHeight]="50">
             <ngx-datatable-column name="ID" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                    {{ row?.name }}
+                    {{ row?.id }}
                 </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column name="Nombre" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                    {{ row?.age }}
+                    {{ row?.nombre }}
                 </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column name="Tipo de Equipo/Vehiculo" [flexGrow]="1">
-                <ng-template let-row="row" ngx-datatable-cell-template>
-                    {{ row?.age }}
+                <ng-template let-row="row.tipoVehiculo" ngx-datatable-cell-template>
+                    {{ row?.nombre }}
                 </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column name="Acciones" [flexGrow]="1">
