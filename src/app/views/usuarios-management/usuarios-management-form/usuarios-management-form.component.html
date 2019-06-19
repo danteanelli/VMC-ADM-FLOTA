@@ -73,7 +73,7 @@
             <mat-form-field class="full-width">
                 <mat-label>Perfil</mat-label>
                 <mat-select disableRipple>
-                    <mat-option *ngFor="let perfil of perfiles" [value]="perfil.id">
+                    <mat-option *ngFor="let perfil of perfiles" [value]="perfil">
                         {{ perfil.nombre }}
                     </mat-option>
                 </mat-select>

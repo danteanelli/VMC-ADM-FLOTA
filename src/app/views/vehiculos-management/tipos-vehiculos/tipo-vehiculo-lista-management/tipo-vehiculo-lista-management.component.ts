@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef, MatDialog, MatSnackBar } from '@angular/material';
-import { AppConfirmService } from '../../../../shared/services/app-confirm/app-confirm.service';
-import { AppLoaderService } from '../../../../shared/services/app-loader/app-loader.service';
-
 import { Subscription } from 'rxjs';
 import { egretAnimations } from '../../../../shared/animations/egret-animations';
 
 // Servicio
-import { VehiculosManagementService } from '../../vehiculos-management.service';
+import { AppConfirmService } from '../../../../shared/services/app-confirm/app-confirm.service';
+import { AppLoaderService } from '../../../../shared/services/app-loader/app-loader.service';
+import { TipoVehiculoManagementService } from '../tipo-vehiculo-management.service';
 
 // Componente
 import { TipoVehiculoFormManagementComponent } from '../tipo-vehiculo-form-management/tipo-vehiculo-form-management.component';
@@ -30,15 +29,25 @@ export class TipoVehiculoListaManagementComponent implements OnInit {
                 private snack: MatSnackBar,
                 private confirmService: AppConfirmService,
                 private loader: AppLoaderService,
-                private vehiculoService: VehiculosManagementService) { }
+                private tiposVehiculoService: TipoVehiculoManagementService) { }
 
     ngOnInit() {
+        this.getTiposVehiculos();
+    }
+
+    getTiposVehiculos() {
+        this.tiposVehiculoService.getAll().subscribe(data => {
+            this.items = data;
+        },
+        error => {
+
+        });
     }
 
     openPopUp(data: any = {}, isNew?) {
         let title = isNew ? 'Agregar Tipo de Vehiculo/Equipo' : 'Modificar Tipo de Vehiculo/Equipo';
         let dialogRef: MatDialogRef<any> = this.dialog.open(TipoVehiculoFormManagementComponent, {
-            width: '720px',
+            width: '400px',
             disableClose: true,
             data: { title: title, payload: data }
         });
@@ -50,19 +59,19 @@ export class TipoVehiculoListaManagementComponent implements OnInit {
                 }
                 this.loader.open();
                 if (isNew) {
-                    // this.vehiculoService.addItem(res)
-                    //     .subscribe( data => {
-                    //         this.items = data;
-                    //         this.loader.close();
-                    //         this.snack.open('Member Added!', 'OK', { duration: 4000 });
-                    //     });
+                    this.tiposVehiculoService.add(res)
+                        .subscribe( data => {
+                            this.getTiposVehiculos();
+                            this.loader.close();
+                            this.snack.open('Agregado correctamente!', 'OK', { duration: 4000 });
+                        });
                 } else {
-                    // this.vehiculoService.updateItem(data._id, res)
-                    //     .subscribe( data => {
-                    //         this.items = data;
-                    //         this.loader.close();
-                    //         this.snack.open('Member Updated!', 'OK', { duration: 4000 });
-                    //     });
+                    this.tiposVehiculoService.update(data.id, res)
+                        .subscribe( data => {
+                            this.getTiposVehiculos();
+                            this.loader.close();
+                            this.snack.open('Modificado correctamente!', 'OK', { duration: 4000 });
+                        });
                 }
             });
     }
