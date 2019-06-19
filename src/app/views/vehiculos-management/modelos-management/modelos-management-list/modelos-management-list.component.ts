@@ -66,19 +66,19 @@ export class ModelosManagementListComponent implements OnInit, OnDestroy {
                 }
                 this.loader.open();
                 if (isNew) {
-                    // this.vehiculoService.addItem(res)
-                    //     .subscribe( data => {
-                    //         this.items = data;
-                    //         this.loader.close();
-                    //         this.snack.open('Member Added!', 'OK', { duration: 4000 });
-                    //     });
+                    this.modelosService.add(res)
+                        .subscribe( data => {
+                            this.obtenerModelos();
+                            this.loader.close();
+                            this.snack.open('Agregado correctamente!', 'OK', { duration: 4000 });
+                        });
                 } else {
-                    // this.vehiculoService.updateItem(data._id, res)
-                    //     .subscribe( data => {
-                    //         this.items = data;
-                    //         this.loader.close();
-                    //         this.snack.open('Member Updated!', 'OK', { duration: 4000 });
-                    //     });
+                    this.modelosService.update(data.id, res)
+                        .subscribe( data => {
+                            this.obtenerModelos();
+                            this.loader.close();
+                            this.snack.open('Modificado correctamente!', 'OK', { duration: 4000 });
+                        });
                 }
             });
     }

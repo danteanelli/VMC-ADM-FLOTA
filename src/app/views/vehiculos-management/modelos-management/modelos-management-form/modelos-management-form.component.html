@@ -14,15 +14,15 @@
         <div fxFlex="50"  class="pr-1">
             <mat-form-field class="full-width">
                 <mat-label>Seleccione Marca</mat-label>
-                <mat-select disableRipple>
-                    <mat-option value="1">Option 1</mat-option>
-                    <mat-option value="2">Option 2</mat-option>
-                    <mat-option value="3">Option 3</mat-option>
+                <mat-select disableRipple [formControl]="itemForm.controls['marca']">
+                    <mat-option *ngFor="let marca of marcas" [value]="marca">
+                        {{ marca.nombre }}
+                    </mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
         <div fxFlex="100" class="mt-1">
-            <button mat-raised-button color="primary" [disabled]="itemForm.invalid">{{"Guardar" }}</button>
+            <button mat-raised-button color="primary" [disabled]="itemForm.invalid">{{ "Guardar" }}</button>
             <span fxFlex></span>
             <button mat-button color="warn" type="button" (click)="dialogRef.close(false)">Cancelar</button>
         </div>
