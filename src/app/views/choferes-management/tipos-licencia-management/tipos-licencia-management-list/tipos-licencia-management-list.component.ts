@@ -75,7 +75,7 @@ export class TiposLicenciaManagementListComponent implements OnInit, OnDestroy {
                             // this.items = data;
                             this.getTiposLicencia();
                             this.loader.close();
-                            this.snack.open('Member Added!', 'OK', { duration: 4000 });
+                            this.snack.open('Agregado correctamente!', 'OK', { duration: 4000 });
                         });
                 } else {
                     this.tiposLicenciaService.update(data.id, res)
@@ -90,7 +90,7 @@ export class TiposLicenciaManagementListComponent implements OnInit, OnDestroy {
     }
 
     deleteItem(row) {
-        this.confirmService.confirm({message: `Delete ${row.nombre}?`})
+        this.confirmService.confirm({message: `Desea eliminar ${row.nombre}?`})
             .subscribe(res => {
                 if (res) {
                     this.loader.open();
@@ -98,7 +98,7 @@ export class TiposLicenciaManagementListComponent implements OnInit, OnDestroy {
                         .subscribe(data => {
                             this.items = data;
                             this.loader.close();
-                            this.snack.open('Member deleted!', 'OK', { duration: 4000 });
+                            this.snack.open('Borrado correctamente!', 'OK', { duration: 4000 });
                         });
                 }
             });

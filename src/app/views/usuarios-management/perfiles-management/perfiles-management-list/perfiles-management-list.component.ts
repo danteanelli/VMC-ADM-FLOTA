@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MatSnackBar } from '@angular/material';
 import { Subscription } from 'rxjs';
 
@@ -13,15 +13,18 @@ import { PerfilesManagementFormComponent } from '../perfiles-management-form/per
 // Animacion
 import { egretAnimations } from '../../../../shared/animations/egret-animations';
 
+// Clase - Modelo
+import { Perfil } from '../../../../models/perfil.model';
+
 @Component({
     selector: 'app-perfiles-management-list',
     templateUrl: './perfiles-management-list.component.html',
     styleUrls: ['./perfiles-management-list.component.scss'],
     animations: egretAnimations
 })
-export class PerfilesManagementListComponent implements OnInit {
+export class PerfilesManagementListComponent implements OnInit, OnDestroy {
 
-    items: any[];
+    items: Perfil[];
     getItemSub: Subscription;
 
     constructor(private dialog: MatDialog,
@@ -32,12 +35,29 @@ export class PerfilesManagementListComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.getPerfiles();
+    }
+
+    ngOnDestroy(): void {
+        if (this.getItemSub) {
+            this.getItemSub.unsubscribe();
+        }
+    }
+
+    getPerfiles() {
+        this.getItemSub = this.perfilesService.getAll().subscribe(data => {
+            this.items = data;
+            console.log(this.items);
+        },
+        error => {
+            console.log('error al obtener los perfiles');
+        });
     }
 
     openPopUp(data: any = {}, isNew?) {
         let title = isNew ? 'Agregar Perfil' : 'Modificar Perfil';
         let dialogRef: MatDialogRef<any> = this.dialog.open(PerfilesManagementFormComponent, {
-            width: '720px',
+            width: '400px',
             disableClose: true,
             data: { title: title, payload: data }
         });
@@ -49,19 +69,36 @@ export class PerfilesManagementListComponent implements OnInit {
                 }
                 this.loader.open();
                 if (isNew) {
-                    // this.vehiculoService.addItem(res)
-                    //     .subscribe( data => {
-                    //         this.items = data;
-                    //         this.loader.close();
-                    //         this.snack.open('Member Added!', 'OK', { duration: 4000 });
-                    //     });
+                    this.perfilesService.add(res)
+                        .subscribe( data => {
+                            // this.items = data;
+                            this.getPerfiles();
+                            this.loader.close();
+                            this.snack.open('Agregado correctamente!', 'OK', { duration: 4000 });
+                        });
                 } else {
-                    // this.vehiculoService.updateItem(data._id, res)
-                    //     .subscribe( data => {
-                    //         this.items = data;
-                    //         this.loader.close();
-                    //         this.snack.open('Member Updated!', 'OK', { duration: 4000 });
-                    //     });
+                    this.perfilesService.update(data.id, res)
+                        .subscribe( data => {
+                            // this.items = data;
+                            this.getPerfiles();
+                            this.loader.close();
+                            this.snack.open('Modificado correctamente!', 'OK', { duration: 4000 });
+                        });
+                }
+            });
+    }
+
+    deleteItem(row) {
+        this.confirmService.confirm({message: `Desea eliminar ${row.nombre}?`})
+            .subscribe(res => {
+                if (res) {
+                    this.loader.open();
+                    this.perfilesService.delete(row.id)
+                        .subscribe(data => {
+                            this.items = data;
+                            this.loader.close();
+                            this.snack.open('Borrado correctamente!', 'OK', { duration: 4000 });
+                        });
                 }
             });
     }

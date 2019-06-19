@@ -74,77 +74,7 @@ export class NavigationService {
                 { name: 'Listado de Usuarios', state: 'listado-usuarios' },
                 { name: 'Listado de Perfiles', state: 'listado-perfiles' }
             ]
-        },
-        {
-            name: 'Centro de Costos',
-            type: 'link',
-            tooltip: 'Dashboard',
-            icon: 'dashboard',
-            state: 'dashboard/home'
-        },
-        {
-            name: 'Obras',
-            type: 'link',
-            tooltip: 'Dashboard',
-            icon: 'dashboard',
-            state: 'dashboard/home'
-        },
-        {
-            name: 'Talleres',
-            type: 'link',
-            tooltip: 'Dashboard',
-            icon: 'dashboard',
-            state: 'dashboard/home'
-        },
-        {
-            name: 'Items de Mantenimiento',
-            type: 'link',
-            tooltip: 'Dashboard',
-            icon: 'dashboard',
-            state: 'dashboard/home'
-        },
-        {
-            name: 'Precios de Alquiler',
-            type: 'link',
-            tooltip: 'Dashboard',
-            icon: 'dashboard',
-            state: 'dashboard/home'
-        },
-        {
-            name: 'Costos',
-            type: 'link',
-            tooltip: 'Dashboard',
-            icon: 'dashboard',
-            state: 'dashboard/home'
-        },
-        {
-            name: 'Sistema de Alquileres',
-            type: 'link',
-            tooltip: 'Dashboard',
-            icon: 'dashboard',
-            state: 'dashboard/home'
-        },
-        {
-            name: 'Reportes',
-            type: 'link',
-            tooltip: 'Dashboard',
-            icon: 'dashboard',
-            state: 'dashboard/home'
         }
-        // {
-        //     name: "BLANK",
-        //     type: "link",
-        //     tooltip: "Dashboard",
-        //     icon: "dashboard",
-        //     state: "others/blank"
-        // },
-        // {
-        //     name: "DOC",
-        //     type: "extLink",
-        //     tooltip: "Documentation",
-        //     icon: "library_books",
-        //     state: "http://demos.ui-lib.com/egret-doc/"
-        // }
     ];
 
     separatorMenu: IMenuItem[] = [

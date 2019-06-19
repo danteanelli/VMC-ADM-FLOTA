@@ -46,6 +46,16 @@ export const rootRouterConfig: Routes = [
                 data: { title: 'Usuario', breadcrumb: 'USUARIO'}
             },
             {
+                path: 'alquiler',
+                loadChildren: './views/sistema-alquileres-management/sistema-alquileres-management.module#SistemaAlquileresManagementModule',
+                data: { title: 'Sistema Alquiler', breadcrumb: 'Sistema Alquiler'}
+            },
+            {
+                path: 'taller',
+                loadChildren: './views/talleres-management/talleres-management.module#TalleresManagementModule',
+                data: { title: 'Talleres', breadcrumb: 'Talleres'}
+            },
+            {
                 path: 'others',
                 loadChildren: './views/others/others.module#OthersModule',
                 data: { title: 'Others', breadcrumb: 'OTHERS'}
