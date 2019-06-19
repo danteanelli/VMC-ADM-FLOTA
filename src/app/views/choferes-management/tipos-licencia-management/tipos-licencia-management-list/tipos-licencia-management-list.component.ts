@@ -1,7 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import { MatDialogRef, MatDialog, MatSnackBar } from '@angular/material';
-import { AppConfirmService } from '../../../../shared/services/app-confirm/app-confirm.service';
-import { AppLoaderService } from '../../../../shared/services/app-loader/app-loader.service';
 import { Subscription } from 'rxjs';
 import { egretAnimations } from '../../../../shared/animations/egret-animations';
 
@@ -10,6 +8,8 @@ import { TiposLicenciaManagementFormComponent } from '../tipos-licencia-manageme
 
 // Servicios
 import { TiposLicenciaManagementService } from '../tipos-licencia-management.service';
+import { AppConfirmService } from '../../../../shared/services/app-confirm/app-confirm.service';
+import { AppLoaderService } from '../../../../shared/services/app-loader/app-loader.service';
 
 // Modelo - Clase
 import { TipoLicencia } from '../../../../models/tipoLicencia.model';

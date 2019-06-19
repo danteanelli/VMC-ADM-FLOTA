@@ -19,8 +19,8 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 // Servicios
 import { TiposLicenciaManagementService } from './tipos-licencia-management/tipos-licencia-management.service';
 import { ChoferesManagementService } from './choferes-management.service';
-import {FlexModule} from '@angular/flex-layout';
-import {FileUploadModule} from 'ng2-file-upload';
+import { FlexModule } from '@angular/flex-layout';
+import { FileUploadModule } from 'ng2-file-upload';
 
 @NgModule({
     declarations: [

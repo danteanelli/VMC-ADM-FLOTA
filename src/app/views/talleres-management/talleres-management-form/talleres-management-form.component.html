@@ -1,3 +1,67 @@
-<p>
-  talleres-management-form works!
-</p>
+<h1 matDialogTitle>{{data.title}}</h1>
+<!--{{"ADD"}} {{"MEMBER"}}-->
+<form [formGroup]="itemForm" (ngSubmit)="submit()">
+    <div fxLayout="row wrap" fxLayout.lt-sm="column">
+
+        <div fxFlex="50"  class="pr-1">
+            <mat-form-field class="full-width">
+                <input
+                        matInput
+                        type="text"
+                        name="nombre"
+                        [formControl]="itemForm.controls['nombre']"
+                        placeholder="Nombre">
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="50"  class="pr-1">
+            <mat-form-field class="full-width">
+                <input
+                        matInput
+                        type="text"
+                        name="direccion"
+                        [formControl]="itemForm.controls['direccion']"
+                        placeholder="Direccion">
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="50"  class="pr-1">
+            <mat-form-field class="full-width">
+                <input
+                        matInput
+                        type="number"
+                        name="telefono"
+                        [formControl]="itemForm.controls['telefono']"
+                        placeholder="Telefono">
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="50"  class="pr-1">
+            <mat-form-field class="full-width">
+                <input
+                        matInput
+                        type="text"
+                        name="responsable"
+                        [formControl]="itemForm.controls['responsable']"
+                        placeholder="Responsable">
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="50"  class="pr-1">
+            <mat-form-field class="full-width">
+                <input
+                        matInput
+                        type="number"
+                        name="cuit"
+                        [formControl]="itemForm.controls['cuit']"
+                        placeholder="Cuit">
+            </mat-form-field>
+        </div>
+
+        <div fxFlex="100" class="mt-1">
+            <button mat-raised-button color="primary" [disabled]="itemForm.invalid">{{ "Guardar" }}</button>
+            <span fxFlex></span>
+            <button mat-button color="warn" type="button" (click)="dialogRef.close(false)">Cancelar</button>
+        </div>
+    </div>
+</form>
