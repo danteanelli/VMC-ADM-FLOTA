@@ -13,6 +13,9 @@ import { egretAnimations } from '../../../shared/animations/egret-animations';
 // Componente
 import { UsuariosManagementFormComponent } from '../usuarios-management-form/usuarios-management-form.component';
 
+// Modelo - Clase
+import { Usuario } from '../../../models/usuario.model';
+
 @Component({
     selector: 'app-usuarios-management-list',
     templateUrl: './usuarios-management-list.component.html',
@@ -21,7 +24,7 @@ import { UsuariosManagementFormComponent } from '../usuarios-management-form/usu
 })
 export class UsuariosManagementListComponent implements OnInit {
 
-    items: any[];
+    items: Usuario[];
     getItemSub: Subscription;
 
     constructor(private dialog: MatDialog,
@@ -32,6 +35,16 @@ export class UsuariosManagementListComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.getUsuarios();
+    }
+
+    getUsuarios() {
+        this.usuariosService.getAll().subscribe(data => {
+            this.items = data;
+        },
+        error => {
+            this.snack.open('Error al obtener los datos', 'OK', { duration: 4000 });
+        });
     }
 
     openPopUp(data: any = {}, isNew?) {
@@ -49,19 +62,19 @@ export class UsuariosManagementListComponent implements OnInit {
                 }
                 this.loader.open();
                 if (isNew) {
-                    // this.vehiculoService.addItem(res)
-                    //     .subscribe( data => {
-                    //         this.items = data;
-                    //         this.loader.close();
-                    //         this.snack.open('Member Added!', 'OK', { duration: 4000 });
-                    //     });
+                    this.usuariosService.add(res)
+                        .subscribe( data => {
+                            this.getUsuarios();
+                            this.loader.close();
+                            this.snack.open('Agregado correctamente!', 'OK', { duration: 4000 });
+                        });
                 } else {
-                    // this.vehiculoService.updateItem(data._id, res)
-                    //     .subscribe( data => {
-                    //         this.items = data;
-                    //         this.loader.close();
-                    //         this.snack.open('Member Updated!', 'OK', { duration: 4000 });
-                    //     });
+                    this.usuariosService.update(data.id, res)
+                        .subscribe( data => {
+                            this.getUsuarios();
+                            this.loader.close();
+                            this.snack.open('Modificado correctamente!', 'OK', { duration: 4000 });
+                        });
                 }
             });
     }

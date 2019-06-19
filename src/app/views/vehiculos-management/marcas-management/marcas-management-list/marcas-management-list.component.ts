@@ -1,11 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MatSnackBar } from '@angular/material';
-import { AppConfirmService } from '../../../../shared/services/app-confirm/app-confirm.service';
-import { AppLoaderService } from '../../../../shared/services/app-loader/app-loader.service';
 import { Subscription} from 'rxjs';
+
+// Animacion
 import { egretAnimations } from '../../../../shared/animations/egret-animations';
 
 // Servicio
+import { AppConfirmService } from '../../../../shared/services/app-confirm/app-confirm.service';
+import { AppLoaderService } from '../../../../shared/services/app-loader/app-loader.service';
 import { MarcasManagementService } from '../marcas-management.service';
 
 // Componente
@@ -32,7 +34,7 @@ export class MarcasManagementListComponent implements OnInit, OnDestroy {
                 private marcasService: MarcasManagementService) { }
 
     ngOnInit() {
-        this.obtenerMarcas();
+        this.getMarcas();
     }
 
     ngOnDestroy(): void {
@@ -41,17 +43,12 @@ export class MarcasManagementListComponent implements OnInit, OnDestroy {
         }
     }
 
-    obtenerMarcas() {
-        /*setTimeout(() => {
-            this.loader.open('Cargando...');
-        });*/
+    getMarcas() {
         this.getItemSub = this.marcasService.getAll().subscribe(data => {
             this.items = data;
-            this.loader.close();
         },
         error => {
             console.log('error al obtener las marcas');
-            // this.loader.close();
             this.snack.open('Error al cargar los datos', 'OK', { duration: 4000 });
         });
     }
@@ -59,7 +56,7 @@ export class MarcasManagementListComponent implements OnInit, OnDestroy {
     openPopUp(data: any = {}, isNew?) {
         let title = isNew ? 'Agregar Marca' : 'Modificar Marca';
         let dialogRef: MatDialogRef<any> = this.dialog.open(MarcasManagementFormComponent, {
-            width: '720px',
+            width: '400px',
             disableClose: true,
             data: { title: title, payload: data }
         });
@@ -74,17 +71,18 @@ export class MarcasManagementListComponent implements OnInit, OnDestroy {
                     this.marcasService.add(res)
                         .subscribe( data => {
                             // this.items = data;
-                            this.obtenerMarcas();
+                            this.getMarcas();
                             this.loader.close();
-                            this.snack.open('Se agrego una nueva Marca', 'OK', { duration: 4000 });
+                            this.snack.open('Agregado correctamente', 'OK', { duration: 4000 });
                         });
                 } else {
-                    // this.vehiculoService.updateItem(data._id, res)
-                    //     .subscribe( data => {
-                    //         this.items = data;
-                    //         this.loader.close();
-                    //         this.snack.open('Member Updated!', 'OK', { duration: 4000 });
-                    //     });
+                    this.marcasService.update(data.id, res)
+                        .subscribe( data => {
+                            // this.items = data;
+                            this.getMarcas();
+                            this.loader.close();
+                            this.snack.open('Modificado correctamente!', 'OK', { duration: 4000 });
+                        });
                 }
             });
     }

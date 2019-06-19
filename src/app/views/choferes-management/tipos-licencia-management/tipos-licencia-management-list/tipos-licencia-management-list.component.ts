@@ -43,9 +43,9 @@ export class TiposLicenciaManagementListComponent implements OnInit, OnDestroy {
     }
 
     getTiposLicencia() {
-        /*setTimeout(() => {
+        setTimeout(() => {
             this.loader.open('Cargando...');
-        });*/
+        });
         this.getItemSub = this.tiposLicenciaService.getAll().subscribe(data => {
             this.items = data;
             this.loader.close();
@@ -83,7 +83,7 @@ export class TiposLicenciaManagementListComponent implements OnInit, OnDestroy {
                              // this.items = data;
                              this.getTiposLicencia();
                              this.loader.close();
-                             this.snack.open('Member Updated!', 'OK', { duration: 4000 });
+                             this.snack.open('Modificado correctamente!', 'OK', { duration: 4000 });
                          });
                 }
             });

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { RequestService } from '../../../core/services';
 import { Observable } from 'rxjs';
+import {Marca} from '../../../models/marca.model';
 
 @Injectable({
     providedIn: 'root'
@@ -20,11 +21,11 @@ export class MarcasManagementService {
         return this.requestService.get(`${this.marcasURL}/` + id);
     }
 
-    public add(marca: any): Observable<any> {
+    public add(marca: Marca): Observable<Marca> {
         return this.requestService.post(`${this.marcasURL}`, marca);
     }
 
-    public update(id: any, marca: any): Observable<any> {
+    public update(id: any, marca: Marca): Observable<Marca> {
         return this.requestService.put(`${this.marcasURL}/${id}`, marca);
     }
 
