@@ -21,7 +21,7 @@ export class MarcasManagementFormComponent implements OnInit {
 
     buildItemForm(item) {
         this.itemForm = this.fb.group({
-            nombre: [item.name || '', Validators.required]
+            nombre: [item.nombre || '', Validators.required]
         });
     }
 
