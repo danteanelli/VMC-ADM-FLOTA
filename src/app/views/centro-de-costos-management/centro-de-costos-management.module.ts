@@ -8,6 +8,8 @@ import { CentroDeCostosManagementFormComponent } from './centro-de-costos-manage
 
 // Rutas
 import { centroCostosRoutes } from './centro-de-costos-management.routing';
+import {SharedMaterialModule} from '../../shared/shared-material.module';
+import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 
 @NgModule({
     declarations: [
@@ -16,7 +18,9 @@ import { centroCostosRoutes } from './centro-de-costos-management.routing';
     ],
     imports: [
         CommonModule,
-        RouterModule.forChild(centroCostosRoutes)
+        RouterModule.forChild(centroCostosRoutes),
+        SharedMaterialModule,
+        NgxDatatableModule
     ],
     entryComponents: [
         CentroDeCostosManagementFormComponent

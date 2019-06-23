@@ -12,7 +12,9 @@ import { TalleresManagementService } from '../talleres-management.service';
 
 // Modelo - Clase
 import { Taller } from '../../../models/taller.model';
-import {TalleresManagementFormComponent} from '../talleres-management-form/talleres-management-form.component';
+
+// Componente
+import { TalleresManagementFormComponent } from '../talleres-management-form/talleres-management-form.component';
 
 @Component({
     selector: 'app-talleres-management-list',
@@ -43,16 +45,16 @@ export class TalleresManagementListComponent implements OnInit, OnDestroy {
     }
 
     getTalleres() {
-        setTimeout(() => {
+        /*setTimeout(() => {
             this.loader.open('Cargando...');
-        });
+        });*/
         this.getItemSub = this.talleresService.getAll().subscribe(data => {
-                this.items = data;
-                this.loader.close();
-            },
-            error => {
-                console.log('error al obtener los talleres');
-            });
+            this.items = data;
+            this.loader.close();
+        },
+        error => {
+            console.log('error al obtener los talleres');
+        });
     }
 
     openPopUp(data: any = {} , isNew?) {
