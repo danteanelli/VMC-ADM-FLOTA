@@ -51,9 +51,19 @@ export const rootRouterConfig: Routes = [
                 data: { title: 'Sistema Alquiler', breadcrumb: 'Sistema Alquiler'}
             },
             {
+                path: 'centro-costos',
+                loadChildren: './views/centro-de-costos-management/centro-de-costos-management.module#CentroDeCostosManagementModule',
+                data: { title: 'Centro de Costos', breadcrumb: 'Centro de Costos'}
+            },
+            {
                 path: 'taller',
                 loadChildren: './views/talleres-management/talleres-management.module#TalleresManagementModule',
                 data: { title: 'Talleres', breadcrumb: 'Talleres'}
+            },
+            {
+                path: 'obras',
+                loadChildren: './views/obras-management/obras-management.module#ObrasManagementModule',
+                data: { title: 'Obras', breadcrumb: 'Obras'}
             },
             {
                 path: 'others',

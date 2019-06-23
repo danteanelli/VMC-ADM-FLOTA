@@ -10,7 +10,7 @@ export const obrasRoutes: Routes = [
             {
                 path: 'listado-obras',
                 component: ObrasManagementListComponent,
-                data: { title: 'Obras', breadcrumb: 'Obras' }
+                data: { title: 'Listado Obras', breadcrumb: 'Listado Obras' }
             }
         ]
     }
