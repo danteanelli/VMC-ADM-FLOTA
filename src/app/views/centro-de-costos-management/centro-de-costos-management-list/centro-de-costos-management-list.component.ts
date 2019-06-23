@@ -59,7 +59,7 @@ export class CentroDeCostosManagementListComponent implements OnInit, OnDestroy 
     openPopUp(data: any = {} , isNew?) {
         let title = isNew ? 'Agregar Centro de Costo' : 'Modificar Centro de Costos';
         let dialogRef: MatDialogRef<any> = this.dialog.open(CentroDeCostosManagementFormComponent, {
-            width: '400px',
+            width: '710px',
             disableClose: true,
             data: { title: title, payload: data }
         });

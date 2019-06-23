@@ -10,6 +10,8 @@ import { CentroDeCostosManagementFormComponent } from './centro-de-costos-manage
 import { centroCostosRoutes } from './centro-de-costos-management.routing';
 import {SharedMaterialModule} from '../../shared/shared-material.module';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
+import {ReactiveFormsModule} from '@angular/forms';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 @NgModule({
     declarations: [
@@ -20,7 +22,9 @@ import {NgxDatatableModule} from '@swimlane/ngx-datatable';
         CommonModule,
         RouterModule.forChild(centroCostosRoutes),
         SharedMaterialModule,
-        NgxDatatableModule
+        NgxDatatableModule,
+        ReactiveFormsModule,
+        FlexLayoutModule
     ],
     entryComponents: [
         CentroDeCostosManagementFormComponent
