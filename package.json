@@ -74,7 +74,7 @@
     "@types/jasmine": "2.5.38",
     "@types/node": "6.0.60",
     "codelyzer": "~2.0.0",
-    "copy-webpack-plugin": "4.3.0",
+    "copy-webpack-plugin": "4.6.0",
     "enhanced-resolve": "3.3.0",
     "jasmine-core": "~2.5.2",
     "jasmine-spec-reporter": "~3.2.0",
